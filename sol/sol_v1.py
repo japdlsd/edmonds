@@ -739,8 +739,6 @@ class Solver:
             else:
                 logging.warning("WTF: you shouldn't be here!")
                 break
-
-        logging.warning("CORE PROCEDURE IS NOT FULLY IMPLEMENTED")
         return self.M
 
 
