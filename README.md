@@ -8,3 +8,9 @@ Course's web-page: [link](http://kedrigern.dcs.fmph.uniba.sk/kralovic/new/index.
 ```
 bash test_solution.sh <sol>
 ```
+
+# Demo
+
+```
+bash demo.sh
+```
