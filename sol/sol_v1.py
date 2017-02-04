@@ -603,42 +603,6 @@ class Solver:
         if i_stem <= i_sub:
             logging.debug("from left to right")
             assert(i_stem == 0)
-            
-            """
-            # new nodes             
-            nodes = []
-            node = HTNode(critical_blossom.blossoms[0])
-            nodes.append(node)
-            critical_blossom.blossoms[0].parent_blossom = None
-            critical_blossom.blossoms[0].node = nodes[0]
-
-            
-            for i in range(2, i_sub+1, 2):
-                nodes.append(HTNode(critical_blossom.blossoms[i-1]))
-                critical_blossom.blossoms[i-1].node = nodes[-1]
-                critical_blossom.blossoms[i-1].parent_blossom = None
-            
-                nodes.append(HTNode(critical_blossom.blossoms[i]))
-                critical_blossom.blossoms[i].node = nodes[-1]
-                critical_blossom.blossoms[i].parent_blossom = None
-
-            nodes[0].parent_node = (upedge, upnode)
-            upnode.add_child = (upedge, nodes[0])
-            for i in range(1, len(nodes)):
-                nodes[i].parent_node = (critical_blossom.blossom_edges[i-1], nodes[i-1])
-                nodes[i-1].add_child(critical_blossom.blossom_edges[i-1], nodes[i])
-            nodes[-1].add_child(downedge, downnode)
-            downnode.parent_node(downedge, nodes[-1])
-
-            # new dumbbells
-            for i in range(i_sub+1, len(critical_blossom.blossoms), 2):
-                dumbbell = Dumbbell(critical_blossom.blossoms[i], critical_blossom.blossoms[i+1], critical_blossom.blossom_edges[i])
-                for b in (critical_blossom.blossoms[i], critical_blossom.blossoms[i+1]):
-                    b.parent_blossom = None
-                    b.dumbbell = dumbbell
-                    b.node = None
-                self.dumbbell_array.add_dumbbell(dumbbell)
-            """
 
             nodes = []
 
@@ -671,40 +635,6 @@ class Solver:
             logging.debug("from right to left")
             assert(i_stem == len(critical_blossom.blossoms) - 1)
             
-            """
-            # new edges
-            nodes = []
-            node = HTNode(critical_blossom.blossoms[-1])
-            nodes.append(node)
-            critical_blossom.blossoms[-1].parent_blossom = None
-            critical_blossom.blossoms[-1].node = nodes[0]
-
-            for i in range(i_stem-1, i_sub-1, -2):
-                nodes.append(HTNode(critical_blossom.blossoms[i]))
-                critical_blossom.blossoms[i].parent_blossom = None
-                critical_blossom.blossoms[i].node = nodes[-1]
-
-                nodes.append(HTNode(critical_blossom.blossoms[i-1]))
-                critical_blossom.blossoms[i-1].parent_blossom = None
-                critical_blossom.blossoms[i-1].node = nodes[-1]
-
-            nodes[0].parent_node = (upedge, upnode)
-            upnode.add_child(upedge, nodes[0])
-            for i in range(1, len(nodes)):
-                nodes[i].parent_node = (critical_blossom.blossom_edges[i_stem-i], nodes[i-1])
-                nodes[i-1].add_child(critical_blossom.blossom_edges[i_stem-i], nodes[i])
-            nodes[-1].add_child(downedge, downnode)
-            downnode.parent_node = (downedge, nodes[-1])
-
-            # new dumbbells
-            for i in range(0, i_sub, 2):
-                dumbbell = Dumbbell(critical_blossom.blossoms[i], critical_blossom.blossoms[i+1], critical_blossom.blossom_edges[i])
-                for b in (critical_blossom.blossoms[i], critical_blossom.blossoms[i+1]):
-                    b.parent_blossom = None
-                    b.node = None
-                    b.dumbbell = dumbbell
-                self.dumbbell_array.add_dumbbell(dumbbell)
-            """
             nodes = []
             nodes.append(HTNode(critical_blossom.blossoms[i_sub]))
             critical_blossom.blossoms[i_sub].parent_blossom = None
